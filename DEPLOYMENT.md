@@ -5,8 +5,7 @@
 | Dominio | Proyecto | Tipo |
 |---|---|---|
 | `teorianautica.com` | teorianautica-landing | Landing estática (SSG) |
-| `conductor.teorianautica.com` | teoria-nautica-conductor | App Next.js (SSR) |
-| `timonel.teorianautica.com` | (futuro) | App Next.js (SSR) |
+| `app.teorianautica.com` | teoria-nautica-conductor | App Next.js (SSR, Render). Todos los cursos |
 
 ---
 
