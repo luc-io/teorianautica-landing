@@ -2,11 +2,11 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Teoría Náutica — Aprendé navegación con práctica inteligente',
-  description: 'Plataforma de estudio para habilitaciones náuticas de la Prefectura Naval Argentina. Flashcards, tutor IA y teoría para Conductor Náutico y Timonel de Yate.',
+  title: 'Teoría Náutica — El curso teórico para tu licencia náutica',
+  description: 'El programa de la Prefectura completo para Conductor Náutico y Timonel de Yate: lecciones y quizzes gratis, instructor con IA y simulacros de examen.',
   openGraph: {
     title: 'Teoría Náutica',
-    description: 'Aprendé navegación con práctica inteligente',
+    description: 'El curso teórico completo para tu licencia náutica',
     type: 'website',
   },
 };
