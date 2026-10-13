@@ -30,3 +30,39 @@ html {
     text-wrap: balance;
   }
 }
+
+/* Texto largo de las páginas de contenido (/rendir-libre, cursos). */
+@layer components {
+  .prose-tn {
+    @apply text-gray-300 leading-relaxed;
+  }
+  .prose-tn > * + * {
+    @apply mt-4;
+  }
+  .prose-tn h2 {
+    @apply font-display text-2xl font-bold text-white mt-14 mb-2 text-balance;
+  }
+  .prose-tn > h2:first-child,
+  .prose-tn > script:first-child + h2 {
+    @apply mt-0;
+  }
+  .prose-tn h3 {
+    @apply font-display text-lg font-bold text-white mt-8;
+  }
+  .prose-tn strong {
+    @apply text-white;
+  }
+  .prose-tn ul,
+  .prose-tn ol {
+    @apply pl-5 space-y-2;
+  }
+  .prose-tn ul {
+    @apply list-disc marker:text-gold-500;
+  }
+  .prose-tn ol {
+    @apply list-decimal marker:text-gold-400 marker:font-mono;
+  }
+  .prose-tn a {
+    @apply text-gold-400 underline underline-offset-2 hover:text-gold-300;
+  }
+}
