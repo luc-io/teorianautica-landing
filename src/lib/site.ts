@@ -8,8 +8,6 @@ export const APP_URL = 'https://app.teorianautica.com';
 export const SITE_NAME = 'Teoría Náutica';
 export const EMAIL = 'hola@teorianautica.com';
 
-// Enlaces legales (Res. SCI 424/2020: botón de arrepentimiento y de baja). Las
-// páginas viven en la app.
 /**
  * Enlace del QR de Data Fiscal (F. 960/NM de ARCA), que tiene que mostrar quien
  * vende por internet: el `href` que da ARCA, `https://qr.afip.gob.ar/?qr=…`.
@@ -17,11 +15,13 @@ export const EMAIL = 'hola@teorianautica.com';
  */
 export const DATA_FISCAL_URL = process.env.NEXT_PUBLIC_DATA_FISCAL_URL?.trim() || null;
 
+// Enlaces legales del pie. Las páginas viven en la app, que es donde se compra:
+// el botón de arrepentimiento (Res. SCI 424/2020) va en la primera pantalla de
+// la app, no acá, porque el landing no vende. No hay botón de baja: el Pase es
+// un pago único sin renovación.
 export const LEGAL = {
   terminos: `${APP_URL}/terminos`,
   privacidad: `${APP_URL}/privacidad`,
-  arrepentimiento: `${APP_URL}/arrepentimiento`,
-  baja: `${APP_URL}/arrepentimiento?tipo=baja`,
 };
 
 export type Curso = {
