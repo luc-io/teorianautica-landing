@@ -1,4 +1,4 @@
-import { EMAIL, LEGAL } from '@/lib/site';
+import { DATA_FISCAL_URL, EMAIL, LEGAL } from '@/lib/site';
 
 const LEGALES = [
   { href: LEGAL.terminos, label: 'Términos' },
@@ -46,6 +46,14 @@ export function SiteFooter() {
             </li>
           ))}
         </ul>
+        {DATA_FISCAL_URL && (
+          <div className="flex justify-center">
+            <a href={DATA_FISCAL_URL} target="_F960AFIPInfo" rel="noopener noreferrer" aria-label="Data Fiscal en ARCA">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/images/data-fiscal.jpg" alt="Data Fiscal" width={48} height={66} loading="lazy" />
+            </a>
+          </div>
+        )}
         <p className="text-xs text-gray-400 text-center">
           Contenido basado en el programa de la PNA. No es un producto oficial de la Prefectura Naval Argentina.
         </p>

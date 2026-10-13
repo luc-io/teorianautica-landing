@@ -10,6 +10,13 @@ export const EMAIL = 'hola@teorianautica.com';
 
 // Enlaces legales (Res. SCI 424/2020: botón de arrepentimiento y de baja). Las
 // páginas viven en la app.
+/**
+ * Enlace del QR de Data Fiscal (F. 960/NM de ARCA), que tiene que mostrar quien
+ * vende por internet: el `href` que da ARCA, `https://qr.afip.gob.ar/?qr=…`.
+ * Sin cargar en Vercel, el QR no se muestra.
+ */
+export const DATA_FISCAL_URL = process.env.NEXT_PUBLIC_DATA_FISCAL_URL?.trim() || null;
+
 export const LEGAL = {
   terminos: `${APP_URL}/terminos`,
   privacidad: `${APP_URL}/privacidad`,
