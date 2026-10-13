@@ -8,6 +8,15 @@ export const APP_URL = 'https://app.teorianautica.com';
 export const SITE_NAME = 'Teoría Náutica';
 export const EMAIL = 'hola@teorianautica.com';
 
+// Enlaces legales (Res. SCI 424/2020: botón de arrepentimiento y de baja). Las
+// páginas viven en la app.
+export const LEGAL = {
+  terminos: `${APP_URL}/terminos`,
+  privacidad: `${APP_URL}/privacidad`,
+  arrepentimiento: `${APP_URL}/arrepentimiento`,
+  baja: `${APP_URL}/arrepentimiento?tipo=baja`,
+};
+
 export type Curso = {
   slug: string;
   icon: string;

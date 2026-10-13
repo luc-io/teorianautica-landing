@@ -18,7 +18,7 @@ export function ContentPage({
   return (
     <main className="min-h-screen">
       <SiteNav />
-      <header className="pt-32 pb-12 px-6 border-b border-navy-800">
+      <header className="pt-36 sm:pt-40 pb-12 px-6 border-b border-navy-800">
         <div className="max-w-3xl mx-auto">
           <p className="text-gold-400 font-mono text-sm tracking-widest uppercase mb-4">{kicker}</p>
           <h1 className="font-display text-4xl sm:text-5xl font-bold text-white leading-tight mb-6 text-balance">

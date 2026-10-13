@@ -1,4 +1,11 @@
-import { EMAIL } from '@/lib/site';
+import { EMAIL, LEGAL } from '@/lib/site';
+
+const LEGALES = [
+  { href: LEGAL.terminos, label: 'Términos' },
+  { href: LEGAL.privacidad, label: 'Privacidad' },
+  { href: LEGAL.arrepentimiento, label: 'Botón de arrepentimiento' },
+  { href: LEGAL.baja, label: 'Botón de baja' },
+];
 
 export function SiteFooter() {
   return (
@@ -30,6 +37,15 @@ export function SiteFooter() {
             {EMAIL}
           </a>
         </div>
+        <ul className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs text-gray-400">
+          {LEGALES.map((l) => (
+            <li key={l.label}>
+              <a href={l.href} className="hover:text-white transition-colors">
+                {l.label}
+              </a>
+            </li>
+          ))}
+        </ul>
         <p className="text-xs text-gray-400 text-center">
           Contenido basado en el programa de la PNA. No es un producto oficial de la Prefectura Naval Argentina.
         </p>

@@ -28,13 +28,13 @@ export default function LandingPage() {
       <SiteNav />
 
       {/* Hero */}
-      <section className="pt-32 pb-20 px-6">
+      <section className="pt-28 sm:pt-40 pb-20 px-6">
         <div className="max-w-3xl mx-auto text-center">
           <p className="text-gold-400 font-mono text-sm tracking-widest uppercase mb-4">Conductor Náutico · Timonel de Yate</p>
           <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-tight mb-6 text-balance">
             El curso teórico completo para tu licencia náutica
           </h1>
-          <p className="text-lg text-gray-400 max-w-xl mx-auto mb-10 text-balance">
+          <p className="text-base sm:text-lg text-gray-400 max-w-xl mx-auto mb-8 sm:mb-10 text-balance">
             El examen de Conductor Náutico y de Timonel de Yate es 80% teoría. Esa parte la estudiás acá: el programa
             de la Prefectura completo, en tu casa, empezando el día que quieras. Sin esperar a que abra una cohorte.
           </p>
@@ -52,7 +52,7 @@ export default function LandingPage() {
               VER QUÉ INCLUYE
             </a>
           </div>
-          <p className="text-sm text-gray-400 mt-6">Todas las lecciones gratis, sin tarjeta.</p>
+          <p className="text-sm text-gray-400 mt-4 sm:mt-6">Todas las lecciones gratis, sin tarjeta.</p>
         </div>
       </section>
 
