@@ -28,7 +28,7 @@ export default function LandingPage() {
       <SiteNav />
 
       {/* Hero */}
-      <section className="pt-28 sm:pt-40 pb-20 px-6">
+      <section className="pt-32 pb-20 px-6">
         <div className="max-w-3xl mx-auto text-center">
           <p className="text-gold-400 font-mono text-sm tracking-widest uppercase mb-4">Conductor Náutico · Timonel de Yate</p>
           <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-tight mb-6 text-balance">

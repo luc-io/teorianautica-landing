@@ -3,8 +3,6 @@ import { DATA_FISCAL_URL, EMAIL, LEGAL } from '@/lib/site';
 const LEGALES = [
   { href: LEGAL.terminos, label: 'Términos' },
   { href: LEGAL.privacidad, label: 'Privacidad' },
-  { href: LEGAL.arrepentimiento, label: 'Botón de arrepentimiento' },
-  { href: LEGAL.baja, label: 'Botón de baja' },
 ];
 
 export function SiteFooter() {
