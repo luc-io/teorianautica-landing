@@ -1,9 +1,21 @@
 // Copy: `docs/producto/landing-copy.md` en teoria-nautica-conductor.
-// Los números (lecciones, temas, precios, tope diario) salen del catálogo y de
-// `src/lib/mercadopago.ts` de la app. Si cambian allá, se cambian acá: un número
-// desactualizado en la landing es peor que ninguno.
+// Los números viven en `src/lib/site.ts`.
 
-const APP_URL = 'https://app.teorianautica.com';
+import type { Metadata } from 'next';
+import { CtaBlock } from '@/components/CtaBlock';
+import { JsonLd } from '@/components/JsonLd';
+import { SiteFooter } from '@/components/SiteFooter';
+import { SiteNav } from '@/components/SiteNav';
+import { homeLd } from '@/lib/jsonld';
+import { pageMetadata } from '@/lib/meta';
+import { APP_URL, CURSOS, FAQS, precioARS } from '@/lib/site';
+
+export const metadata: Metadata = pageMetadata({
+  title: { absolute: 'Teoría Náutica — El curso teórico para tu licencia náutica' },
+  description:
+    'El programa de la Prefectura completo para Conductor Náutico y Timonel de Yate: lecciones y quizzes gratis, instructor con IA y simulacros de examen.',
+  path: '/',
+});
 
 function Check() {
   return <span className="text-gold-500 flex-shrink-0">→</span>;
@@ -12,35 +24,17 @@ function Check() {
 export default function LandingPage() {
   return (
     <main className="min-h-screen">
-      {/* Nav */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-navy-950/80 backdrop-blur-md border-b border-navy-800/50">
-        <div className="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <span className="text-lg">⚓</span>
-            <span className="font-display font-bold text-white text-sm tracking-wide">TEORÍA NÁUTICA</span>
-          </div>
-          <div className="flex items-center gap-6">
-            <a href="#incluye" className="text-sm text-gray-400 hover:text-white transition-colors hidden sm:block">Qué incluye</a>
-            <a href="#cursos" className="text-sm text-gray-400 hover:text-white transition-colors hidden sm:block">Cursos</a>
-            <a href="#rendir" className="text-sm text-gray-400 hover:text-white transition-colors hidden sm:block">Cómo se rinde</a>
-            <a
-              href={APP_URL}
-              className="bg-white text-navy-950 text-sm font-semibold px-4 py-1.5 hover:bg-gray-100 transition-colors"
-            >
-              Empezar
-            </a>
-          </div>
-        </div>
-      </nav>
+      <JsonLd data={homeLd()} />
+      <SiteNav />
 
       {/* Hero */}
-      <section className="pt-32 pb-20 px-6">
+      <section className="pt-28 sm:pt-40 pb-20 px-6">
         <div className="max-w-3xl mx-auto text-center">
           <p className="text-gold-400 font-mono text-sm tracking-widest uppercase mb-4">Conductor Náutico · Timonel de Yate</p>
           <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-tight mb-6 text-balance">
             El curso teórico completo para tu licencia náutica
           </h1>
-          <p className="text-lg text-gray-400 max-w-xl mx-auto mb-10 text-balance">
+          <p className="text-base sm:text-lg text-gray-400 max-w-xl mx-auto mb-8 sm:mb-10 text-balance">
             El examen de Conductor Náutico y de Timonel de Yate es 80% teoría. Esa parte la estudiás acá: el programa
             de la Prefectura completo, en tu casa, empezando el día que quieras. Sin esperar a que abra una cohorte.
           </p>
@@ -58,7 +52,7 @@ export default function LandingPage() {
               VER QUÉ INCLUYE
             </a>
           </div>
-          <p className="text-sm text-gray-500 mt-6">Todas las lecciones gratis, sin tarjeta.</p>
+          <p className="text-sm text-gray-400 mt-4 sm:mt-6">Todas las lecciones gratis, sin tarjeta.</p>
         </div>
       </section>
 
@@ -73,7 +67,7 @@ export default function LandingPage() {
           ].map((stat) => (
             <div key={stat.label}>
               <p className="font-mono text-2xl font-bold text-gold-400">{stat.value}</p>
-              <p className="text-sm text-gray-500 mt-1">{stat.label}</p>
+              <p className="text-sm text-gray-400 mt-1">{stat.label}</p>
             </div>
           ))}
         </div>
@@ -177,26 +171,7 @@ export default function LandingPage() {
           </p>
 
           <div className="grid md:grid-cols-2 gap-6">
-            {[
-              {
-                icon: '🚤',
-                nombre: 'Conductor Náutico',
-                desc: 'La licencia inicial, para embarcaciones a motor cerca de la costa.',
-                datos: '77 lecciones · 17 temas de seguridad y legislación',
-                precio: '$20.000',
-                duracion: '3 meses',
-                tope: 2,
-              },
-              {
-                icon: '⛵',
-                nombre: 'Timonel de Yate',
-                desc: 'La licencia superior: embarcaciones más grandes y navegación más lejos de la costa. Agrega la materia de navegación, que conductor no tiene. A motor, o a vela y motor.',
-                datos: '146 lecciones a motor, 159 a vela y motor · 26 temas',
-                precio: '$40.000',
-                duracion: '6 meses',
-                tope: 4,
-              },
-            ].map((c) => (
+            {CURSOS.map((c) => (
               <div key={c.nombre} className="bg-navy-800 border border-navy-700 p-6 flex flex-col">
                 <span className="text-2xl mb-4">{c.icon}</span>
                 <h3 className="font-display text-xl font-bold text-white mb-2">{c.nombre}</h3>
@@ -205,7 +180,7 @@ export default function LandingPage() {
                   {[
                     c.datos,
                     `Gratis: todas las lecciones y sus quizzes, hasta ${c.tope} lecciones nuevas por día`,
-                    `Pase: ${c.precio} por ${c.duracion}, pago único`,
+                    `Pase: ${precioARS(c.precio)} por ${c.meses} meses, pago único`,
                   ].map((feat) => (
                     <li key={feat} className="text-sm text-gray-400 flex gap-2">
                       <Check />
@@ -214,15 +189,21 @@ export default function LandingPage() {
                   ))}
                 </ul>
                 <a
+                  href={`/${c.slug}`}
+                  className="mt-auto mb-3 block text-sm text-gold-400 hover:text-gold-300 transition-colors"
+                >
+                  Ver el curso de {c.nombre} →
+                </a>
+                <a
                   href={APP_URL}
-                  className="mt-auto block w-full bg-white text-navy-950 font-bold py-2.5 text-sm text-center hover:bg-gray-100 transition-colors"
+                  className="block w-full bg-white text-navy-950 font-bold py-2.5 text-sm text-center hover:bg-gray-100 transition-colors"
                 >
                   EMPEZAR GRATIS
                 </a>
               </div>
             ))}
           </div>
-          <p className="text-center text-xs text-gray-500 mt-6">
+          <p className="text-center text-xs text-gray-400 mt-6">
             Pago único con Mercado Pago, sin renovación automática. Cada pase habilita su curso.
           </p>
         </div>
@@ -252,6 +233,11 @@ export default function LandingPage() {
               cuando podés, hacés tus prácticas, y te presentás en el turno del mes.
             </p>
           </div>
+          <p className="text-center mt-8">
+            <a href="/rendir-libre" className="text-sm text-gold-400 hover:text-gold-300 transition-colors">
+              Cómo se rinde libre el examen de Prefectura, paso a paso →
+            </a>
+          </p>
         </div>
       </section>
 
@@ -260,32 +246,7 @@ export default function LandingPage() {
         <div className="max-w-3xl mx-auto">
           <h2 className="font-display text-3xl font-bold text-white text-center mb-10">Preguntas frecuentes</h2>
           <div className="space-y-6">
-            {[
-              {
-                q: '¿Esto reemplaza al curso presencial?',
-                a: 'La teoría sí, y es el 80% del examen. La práctica no: eso se hace en el agua, con instructor y embarcación.',
-              },
-              {
-                q: '¿Puedo rendir sin hacer un curso?',
-                a: 'Sí. Prefectura toma examen a alumnos libres una vez por mes, teórico y práctico.',
-              },
-              {
-                q: '¿Qué es gratis y qué se paga?',
-                a: 'Todas las lecciones y sus quizzes son gratis, con un tope de lecciones nuevas por día (2 en Conductor, 4 en Timonel). El pase suma el instructor con IA sin límite, los exámenes por materia, el examen general, los simulacros, el repaso y las lecciones sin tope.',
-              },
-              {
-                q: '¿Cuánto dura el pase?',
-                a: 'Tres meses en Conductor y seis en Timonel, porque el programa es más largo. Es un pago único: no se renueva solo.',
-              },
-              {
-                q: '¿Timonel incluye Conductor?',
-                a: 'Son dos cursos distintos y cada pase habilita el suyo. Timonel es una licencia superior: su curso cubre la seguridad y la legislación de conductor, más a fondo, y suma navegación.',
-              },
-              {
-                q: '¿Sirve si ya tengo la licencia?',
-                a: 'Sí, para repasar. El contenido es el programa completo, no un resumen para aprobar.',
-              },
-            ].map((f) => (
+            {FAQS.map((f) => (
               <div key={f.q} className="border-b border-navy-800 pb-6">
                 <h3 className="font-display font-bold text-white mb-2">{f.q}</h3>
                 <p className="text-sm text-gray-400 leading-relaxed">{f.a}</p>
@@ -295,38 +256,11 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* CTA final */}
-      <section className="py-20 px-6 border-t border-navy-800">
-        <div className="max-w-2xl mx-auto text-center">
-          <h2 className="font-display text-3xl font-bold text-white mb-4">Probalo antes de pagar</h2>
-          <p className="text-gray-400 mb-8">
-            El curso completo, con sus lecciones y sus quizzes, gratis y sin tarjeta. El pase lo comprás cuando te
-            preparás para rendir.
-          </p>
-          <a
-            href={APP_URL}
-            className="inline-block bg-white text-navy-950 font-bold px-10 py-3 text-sm hover:bg-gray-100 transition-colors"
-          >
-            EMPEZAR GRATIS
-          </a>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="border-t border-navy-800 py-8 px-6">
-        <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <span>⚓</span>
-            <span className="font-display font-bold text-sm text-gray-400">TEORÍA NÁUTICA</span>
-          </div>
-          <p className="text-xs text-gray-600 text-center">
-            Contenido basado en el programa de la PNA. No es un producto oficial de la Prefectura Naval Argentina.
-          </p>
-          <a href="mailto:hola@teorianautica.com" className="text-xs text-gray-500 hover:text-gray-300 transition-colors">
-            hola@teorianautica.com
-          </a>
-        </div>
-      </footer>
+      <CtaBlock
+        titulo="Probalo antes de pagar"
+        texto="El curso completo, con sus lecciones y sus quizzes, gratis y sin tarjeta. El pase lo comprás cuando te preparás para rendir."
+      />
+      <SiteFooter />
     </main>
   );
 }
