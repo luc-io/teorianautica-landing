@@ -11,8 +11,8 @@ export function SiteNav() {
           <span className="font-display font-bold text-white text-sm tracking-wide">TEORÍA NÁUTICA</span>
         </a>
         <div className="flex items-center gap-6">
-          <a href="/#incluye" className="text-sm text-gray-400 hover:text-white transition-colors hidden sm:block">
-            Qué incluye
+          <a href="/#como" className="text-sm text-gray-400 hover:text-white transition-colors hidden sm:block">
+            Cómo funciona
           </a>
           <a href="/#cursos" className="text-sm text-gray-400 hover:text-white transition-colors hidden sm:block">
             Cursos
