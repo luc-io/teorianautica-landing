@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     template: '%s · Teoría Náutica',
   },
   description:
-    'El programa de la Prefectura completo para Conductor Náutico y Timonel de Yate: lecciones y quizzes gratis, instructor con IA y simulacros de examen.',
+    'El programa de la Prefectura completo para Conductor Náutico y Timonel de Yate: lecciones y cuestionarios gratis, instructor con IA y simulacros de examen.',
   applicationName: SITE_NAME,
   openGraph: {
     siteName: SITE_NAME,

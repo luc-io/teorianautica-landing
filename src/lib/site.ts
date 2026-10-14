@@ -87,7 +87,7 @@ export const FAQS: { q: string; a: string }[] = [
   },
   {
     q: '¿Qué es gratis y qué se paga?',
-    a: 'Las lecciones y sus quizzes son gratis. El pase suma instructor con IA sin límite, simulacros, repaso y lecciones sin tope diario.',
+    a: 'Las lecciones y sus cuestionarios son gratis. El pase suma instructor con IA sin límite, simulacros, repaso y lecciones sin tope diario.',
   },
   {
     q: '¿Cuánto cuesta el pase?',
