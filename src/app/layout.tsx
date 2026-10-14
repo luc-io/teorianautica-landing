@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { OG_IMAGE, SITE_NAME, SITE_URL } from '@/lib/site';
 import './globals.css';
+import { PasarUtm } from '@/components/PasarUtm';
 
 // Cada página define su title, description, canonical y preview con
 // `pageMetadata` (src/lib/meta.ts). Esto es el respaldo.
@@ -32,7 +33,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es-AR">
-      <body>{children}</body>
+      <body>
+        {children}
+        <PasarUtm />
+      </body>
     </html>
   );
 }
