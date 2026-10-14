@@ -37,7 +37,19 @@ export type Curso = {
   precio: number;
   meses: number;
   tope: number;
+  /** Los botones para empezar, cada uno con el curso de la app que abre. */
+  empezar: { texto: string; curso: CursoApp }[];
 };
+
+/**
+ * Las claves de curso que entiende la app en `?curso=`: el onboarding salta
+ * las preguntas de la embarcación y arranca con ese curso.
+ */
+export type CursoApp = 'conductor' | 'timonel-motor' | 'timonel-vela';
+
+export function appUrlCurso(curso: CursoApp) {
+  return `${APP_URL}/?curso=${curso}`;
+}
 
 export const CURSOS: Curso[] = [
   {
@@ -51,6 +63,7 @@ export const CURSOS: Curso[] = [
     precio: 20000,
     meses: 3,
     tope: 2,
+    empezar: [{ texto: 'Empezar gratis', curso: 'conductor' }],
   },
   {
     slug: 'timonel-de-yate',
@@ -63,6 +76,10 @@ export const CURSOS: Curso[] = [
     precio: 40000,
     meses: 6,
     tope: 4,
+    empezar: [
+      { texto: 'Empezar a motor', curso: 'timonel-motor' },
+      { texto: 'Empezar a vela y motor', curso: 'timonel-vela' },
+    ],
   },
 ];
 

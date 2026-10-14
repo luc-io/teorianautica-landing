@@ -33,6 +33,7 @@ export default function TimonelDeYate() {
       titulo="Curso de Timonel de Yate, gratis"
       bajada="La licencia para ir más lejos, a motor o a vela. Seguridad, legislación y navegación completa."
       cta={{ titulo: 'Empezá hoy, gratis', texto: 'Sin tarjeta y a tu ritmo.' }}
+      curso={curso}
     >
       <JsonLd data={[courseLd(curso), breadcrumbLd(curso.nombre, `/${curso.slug}`)]} />
 

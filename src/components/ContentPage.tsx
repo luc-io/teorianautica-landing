@@ -1,7 +1,8 @@
 import { CtaBlock } from './CtaBlock';
 import { SiteFooter } from './SiteFooter';
 import { SiteNav } from './SiteNav';
-import { APP_URL } from '@/lib/site';
+import { EmpezarCurso } from './EmpezarCurso';
+import { APP_URL, type Curso } from '@/lib/site';
 
 /**
  * Las páginas de contenido (cursos, rendir libre): título, una línea y el
@@ -12,12 +13,15 @@ export function ContentPage({
   titulo,
   bajada,
   cta,
+  curso,
   children,
 }: {
   kicker: string;
   titulo: string;
   bajada: string;
   cta: { titulo: string; texto: string };
+  /** En las páginas de un curso, los botones abren la app con ese curso. */
+  curso?: Curso;
   children: React.ReactNode;
 }) {
   return (
@@ -30,18 +34,24 @@ export function ContentPage({
             {titulo}
           </h1>
           <p className="text-lg text-gray-300 text-balance">{bajada}</p>
-          <a
-            href={APP_URL}
-            className="mt-7 inline-block w-full sm:w-auto text-center bg-white text-navy-950 font-bold px-10 py-4 text-base hover:bg-gray-100 transition-colors"
-          >
-            Empezar gratis
-          </a>
+          {curso ? (
+            <div className="mt-7">
+              <EmpezarCurso curso={curso} grande />
+            </div>
+          ) : (
+            <a
+              href={APP_URL}
+              className="mt-7 inline-block w-full sm:w-auto text-center bg-white text-navy-950 font-bold px-10 py-4 text-base hover:bg-gray-100 transition-colors"
+            >
+              Empezar gratis
+            </a>
+          )}
         </div>
       </header>
       <article className="py-10 px-6">
         <div className="max-w-3xl mx-auto prose-tn">{children}</div>
       </article>
-      <CtaBlock {...cta} />
+      <CtaBlock {...cta} curso={curso} />
       <SiteFooter />
     </main>
   );

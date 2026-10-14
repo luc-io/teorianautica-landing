@@ -10,6 +10,7 @@ import { homeLd } from '@/lib/jsonld';
 import { pageMetadata } from '@/lib/meta';
 import { APP_URL, CURSOS, FAQS } from '@/lib/site';
 import { AnimacionLoop } from '@/components/AnimacionLoop';
+import { EmpezarCurso } from '@/components/EmpezarCurso';
 
 export const metadata: Metadata = pageMetadata({
   title: { absolute: 'Teoría Náutica — El curso teórico para tu licencia náutica' },
@@ -123,13 +124,8 @@ export default function Home() {
                 </div>
                 <p className="text-gray-300 mt-3">{c.corta}</p>
                 <p className="text-sm text-gray-400 mt-2">{c.lecciones}</p>
-                <div className="mt-6 flex items-center gap-5">
-                  <a
-                    href={APP_URL}
-                    className="bg-white text-navy-950 font-bold px-6 py-3 text-sm hover:bg-gray-100 transition-colors"
-                  >
-                    Empezar gratis
-                  </a>
+                <div className="mt-auto pt-6 flex flex-col items-start gap-4">
+                  <EmpezarCurso curso={c} />
                   <a href={`/${c.slug}`} className="text-sm text-gold-400 hover:text-gold-300 transition-colors">
                     Ver el curso →
                   </a>
