@@ -2,7 +2,7 @@
 // de la app. Temas: `docs/teoria_v3/materias/*/*/tema.md` con lecciones de CONA.
 
 import type { Metadata } from 'next';
-import { ContentPage } from '@/components/ContentPage';
+import { ContentPage, Temas } from '@/components/ContentPage';
 import { CursoResumen } from '@/components/CursoResumen';
 import { JsonLd } from '@/components/JsonLd';
 import { pageMetadata } from '@/lib/meta';
@@ -44,65 +44,33 @@ export default function ConductorNautico() {
   return (
     <ContentPage
       kicker="Curso · Conductor Náutico"
-      titulo="Curso teórico de Conductor Náutico"
-      bajada="La licencia inicial para embarcaciones deportivas a motor. El programa de la Prefectura completo, para estudiar en tu casa y presentarte a rendir cuando estés listo."
-      cta={{
-        titulo: 'Empezá hoy, sin esperar una cohorte',
-        texto: 'Las 77 lecciones de Conductor Náutico, con sus quizzes, gratis y sin tarjeta.',
-      }}
+      titulo="Curso de Conductor Náutico, gratis"
+      bajada="El programa de Prefectura completo: 77 lecciones con animaciones y un quiz por cada idea."
+      cta={{ titulo: 'Empezá hoy, gratis', texto: 'Sin tarjeta y sin esperar una cohorte.' }}
     >
       <JsonLd data={[courseLd(curso), breadcrumbLd(curso.nombre, `/${curso.slug}`)]} />
 
-      <h2>Qué te habilita el carnet de Conductor Náutico</h2>
+      <h2>Qué te habilita</h2>
       <ul>
-        <li>
-          <strong>Embarcaciones deportivas a motor:</strong> lanchas, semirrígidos, motos de agua. A vela, no.
-        </li>
-        <li>
-          <strong>Hasta 10 metros de eslora y 150 HP,</strong> y los dos límites se cumplen a la vez: superar uno ya
-          te deja afuera.
-        </li>
-        <li>
-          <strong>Aguas interiores y área costera restringida:</strong> ríos, lagos y arroyos navegables, y la costa.
-          Mar adentro, no.
-        </li>
-        <li>
-          <strong>Con tiempo favorable o bueno, y de día.</strong> La navegación nocturna queda para habilitaciones
-          superiores.
-        </li>
+        <li>Lanchas, semirrígidos y motos de agua. A vela, no.</li>
+        <li>Hasta 10 metros de eslora y 150 HP, las dos cosas a la vez.</li>
+        <li>Ríos, lagos y la zona costera. Mar adentro, no.</li>
+        <li>De día y con buen tiempo.</li>
       </ul>
       <p>
-        El carnet vence y se renueva con examen psicofísico. Si querés embarcaciones más grandes, vela o ir más
-        lejos, la licencia que sigue es <a href="/timonel-de-yate">Timonel de Yate</a>.
+        ¿Querés vela o ir más lejos? Eso es <a href="/timonel-de-yate">Timonel de Yate</a>.
       </p>
 
       <h2>Qué estudiás</h2>
-      <p>
-        {curso.datos}: el programa de la Prefectura entero, no un resumen de lo que se toma. Cada lección viene con
-        su quiz, y tu progreso se registra idea por idea.
-      </p>
       <h3>Seguridad</h3>
-      <ul>
-        {SEGURIDAD.map((t) => (
-          <li key={t}>{t}</li>
-        ))}
-      </ul>
+      <Temas items={SEGURIDAD} />
       <h3>Legislación</h3>
-      <ul>
-        {LEGISLACION.map((t) => (
-          <li key={t}>{t}</li>
-        ))}
-      </ul>
+      <Temas items={LEGISLACION} />
 
       <h2>Cómo rendir</h2>
       <p>
-        El examen es teórico y práctico. Podés rendir en un club náutico o libre: Prefectura toma examen a alumnos
-        libres una vez por mes, sin que estés inscripto en ningún curso.{' '}
-        <a href="/rendir-libre">Cómo se rinde libre, paso a paso</a>.
-      </p>
-      <p>
-        La teoría es el 80% del examen y la estudiás acá. La práctica se hace en el agua, con instructor y
-        embarcación.
+        Examen teórico y práctico, en un club o libre ante Prefectura, una vez por mes.{' '}
+        <a href="/rendir-libre">Cómo se rinde libre</a>.
       </p>
 
       <CursoResumen curso={curso} />
