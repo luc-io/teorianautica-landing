@@ -35,7 +35,8 @@ export type Curso = {
   lecciones: string;
   datos: string;
   precio: number;
-  meses: number;
+  /** Días de acceso de Pro (`PLANS` × `duracionMultiplicador` en la app). */
+  dias: number;
   tope: number;
   /** Los botones para empezar, cada uno con el curso de la app que abre. */
   empezar: { texto: string; curso: CursoApp }[];
@@ -61,7 +62,7 @@ export const CURSOS: Curso[] = [
     lecciones: '77 lecciones',
     datos: '77 lecciones · 17 temas de seguridad y legislación',
     precio: 20000,
-    meses: 3,
+    dias: 45,
     tope: 2,
     empezar: [{ texto: 'Empezar gratis', curso: 'conductor' }],
   },
@@ -74,7 +75,7 @@ export const CURSOS: Curso[] = [
     lecciones: 'Más de 140 lecciones',
     datos: '146 lecciones a motor, 159 a vela y motor · 26 temas',
     precio: 40000,
-    meses: 6,
+    dias: 90,
     tope: 4,
     empezar: [
       { texto: 'Empezar a motor', curso: 'timonel-motor' },
@@ -87,9 +88,14 @@ export function precioARS(n: number) {
   return `$${n.toLocaleString('es-AR')}`;
 }
 
-/** «$20.000 por 3 meses»: el Pase de un curso, como lo cobra la app (`PLANS`). */
-export function precioPase(c: Curso) {
-  return `${precioARS(c.precio)} por ${c.meses} meses`;
+/** «45 días», «3 meses»: la misma regla que `etiquetaDias` en la app. */
+export function duracion(dias: number) {
+  return dias >= 60 && dias % 30 === 0 ? `${dias / 30} meses` : `${dias} días`;
+}
+
+/** «$20.000 por 45 días»: Pro de un curso, como lo cobra la app (`PLANS`). */
+export function precioPro(c: Curso) {
+  return `${precioARS(c.precio)} por ${duracion(c.dias)}`;
 }
 
 export const FAQS: { q: string; a: string }[] = [
@@ -103,11 +109,11 @@ export const FAQS: { q: string; a: string }[] = [
   },
   {
     q: '¿Qué es gratis y qué se paga?',
-    a: 'Las lecciones y sus cuestionarios son gratis. El pase suma instructor con IA sin límite, simulacros, repaso y lecciones sin tope diario.',
+    a: 'Las lecciones y sus cuestionarios son gratis. Pro suma instructor con IA sin límite, simulacros, repaso y lecciones sin tope diario.',
   },
   {
-    q: '¿Cuánto cuesta el pase?',
-    a: `Conductor Náutico, ${precioPase(CURSOS[0])}. Timonel de Yate, ${precioPase(CURSOS[1])}. Pago único con Mercado Pago, no se renueva solo.`,
+    q: '¿Cuánto cuesta Pro?',
+    a: `Conductor Náutico, ${precioPro(CURSOS[0])}. Timonel de Yate, ${precioPro(CURSOS[1])}. Pago único con Mercado Pago, no se renueva solo.`,
   },
   {
     q: '¿Timonel incluye Conductor?',

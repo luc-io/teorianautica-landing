@@ -8,7 +8,7 @@ import { SiteFooter } from '@/components/SiteFooter';
 import { SiteNav } from '@/components/SiteNav';
 import { homeLd } from '@/lib/jsonld';
 import { pageMetadata } from '@/lib/meta';
-import { APP_URL, CURSOS, FAQS, precioARS } from '@/lib/site';
+import { APP_URL, CURSOS, FAQS, precioPro } from '@/lib/site';
 import { AnimacionLoop } from '@/components/AnimacionLoop';
 import { EmpezarCurso } from '@/components/EmpezarCurso';
 
@@ -163,14 +163,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Gratis y Pase */}
-      <section id="pase" className="py-16 px-6">
+      {/* Gratis y Pro */}
+      <section id="pro" className="py-16 px-6">
         <div className="max-w-4xl mx-auto">
           <h2 className="font-display text-3xl font-bold text-white text-center mb-3 text-balance">
-            Estudiás gratis. Con el pase, llegás al examen
+            Estudiás gratis. Con Pro, llegás al examen
           </h2>
           <p className="text-gray-400 text-center mb-10 text-balance">
-            El pase suma el instructor y los exámenes de práctica.
+            Pro suma el instructor y los exámenes de práctica.
           </p>
           <div className="grid md:grid-cols-2 gap-5">
             <div className="bg-navy-800 border border-navy-700 p-6">
@@ -187,7 +187,7 @@ export default function Home() {
               </ul>
             </div>
             <div className="bg-navy-800 border border-gold-400 p-6">
-              <p className="font-mono text-xs tracking-widest uppercase text-gold-400">Pase</p>
+              <p className="font-mono text-xs tracking-widest uppercase text-gold-400">Pro</p>
               <ul className="mt-5 space-y-4">
                 {PASE.map((p) => (
                   <li key={p.titulo} className="flex gap-3">
@@ -202,8 +202,8 @@ export default function Home() {
                 ))}
               </ul>
               <p className="text-sm text-gray-400 mt-6">
-                Conductor {precioARS(CONDUCTOR.precio)} por {CONDUCTOR.meses} meses · Timonel{' '}
-                {precioARS(TIMONEL.precio)} por {TIMONEL.meses} meses. Pago único, no se renueva solo.
+                Conductor {precioPro(CONDUCTOR)} · Timonel {precioPro(TIMONEL)}. Pago único, no se renueva
+                solo.
               </p>
             </div>
           </div>
