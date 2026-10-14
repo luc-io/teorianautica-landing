@@ -8,7 +8,7 @@ import { SiteFooter } from '@/components/SiteFooter';
 import { SiteNav } from '@/components/SiteNav';
 import { homeLd } from '@/lib/jsonld';
 import { pageMetadata } from '@/lib/meta';
-import { APP_URL, CURSOS, FAQS } from '@/lib/site';
+import { APP_URL, CURSOS, FAQS, precioARS } from '@/lib/site';
 import { AnimacionLoop } from '@/components/AnimacionLoop';
 import { EmpezarCurso } from '@/components/EmpezarCurso';
 
@@ -31,6 +31,33 @@ const PASOS = [
   { titulo: 'Elegí tu licencia', texto: 'Conductor Náutico o Timonel de Yate.' },
   { titulo: 'Estudiá a tu ritmo', texto: 'Lecciones cortas, animaciones y cuestionarios.' },
   { titulo: 'Rendí en Prefectura', texto: 'Libre, en el turno del mes.' },
+];
+
+// Los topes salen de `tope_lecciones_diario` y `FREE_INSTRUCTOR_LIMIT` en la app.
+const [CONDUCTOR, TIMONEL] = CURSOS;
+const GRATIS = [
+  'Todas las lecciones, con animaciones',
+  'Un cuestionario por cada idea',
+  `Hasta ${CONDUCTOR.tope} lecciones nuevas por día (${TIMONEL.tope} en Timonel)`,
+  '3 consultas al instructor',
+];
+const PASE = [
+  {
+    titulo: 'Instructor con IA, sin límite',
+    texto: 'Le preguntás lo que no te cerró de una lección y te responde con el programa del curso y tu progreso.',
+  },
+  {
+    titulo: 'Exámenes de práctica',
+    texto: 'Por materia y del curso completo, con las preguntas de lo que toma Prefectura.',
+  },
+  {
+    titulo: 'Lecciones sin tope diario',
+    texto: 'Avanzás todo lo que quieras el mismo día.',
+  },
+  {
+    titulo: 'Repaso',
+    texto: 'Vuelven las ideas que fallaste hasta que las sabés.',
+  },
 ];
 
 export default function Home() {
@@ -132,6 +159,53 @@ export default function Home() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Gratis y Pase */}
+      <section id="pase" className="py-16 px-6">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="font-display text-3xl font-bold text-white text-center mb-3 text-balance">
+            Estudiás gratis. Con el pase, llegás al examen
+          </h2>
+          <p className="text-gray-400 text-center mb-10 text-balance">
+            El pase suma el instructor y los exámenes de práctica.
+          </p>
+          <div className="grid md:grid-cols-2 gap-5">
+            <div className="bg-navy-800 border border-navy-700 p-6">
+              <p className="font-mono text-xs tracking-widest uppercase text-gray-400">Gratis</p>
+              <ul className="mt-5 space-y-3">
+                {GRATIS.map((g) => (
+                  <li key={g} className="flex gap-3 text-gray-300">
+                    <span className="text-gray-500" aria-hidden>
+                      ✓
+                    </span>
+                    {g}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="bg-navy-800 border border-gold-400 p-6">
+              <p className="font-mono text-xs tracking-widest uppercase text-gold-400">Pase</p>
+              <ul className="mt-5 space-y-4">
+                {PASE.map((p) => (
+                  <li key={p.titulo} className="flex gap-3">
+                    <span className="text-gold-400" aria-hidden>
+                      ✓
+                    </span>
+                    <span>
+                      <span className="block font-display font-bold text-white">{p.titulo}</span>
+                      <span className="block text-sm text-gray-400 mt-0.5">{p.texto}</span>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+              <p className="text-sm text-gray-400 mt-6">
+                Conductor {precioARS(CONDUCTOR.precio)} por {CONDUCTOR.meses} meses · Timonel{' '}
+                {precioARS(TIMONEL.precio)} por {TIMONEL.meses} meses. Pago único, no se renueva solo.
+              </p>
+            </div>
           </div>
         </div>
       </section>
