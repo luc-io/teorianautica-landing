@@ -29,6 +29,10 @@ export type Curso = {
   icon: string;
   nombre: string;
   desc: string;
+  /** Una línea para la tarjeta de la portada. */
+  corta: string;
+  /** El número de lecciones, dicho corto. */
+  lecciones: string;
   datos: string;
   precio: number;
   meses: number;
@@ -41,6 +45,8 @@ export const CURSOS: Curso[] = [
     icon: '🚤',
     nombre: 'Conductor Náutico',
     desc: 'La licencia inicial, para embarcaciones a motor cerca de la costa.',
+    corta: 'La licencia inicial, para lanchas.',
+    lecciones: '77 lecciones',
     datos: '77 lecciones · 17 temas de seguridad y legislación',
     precio: 20000,
     meses: 3,
@@ -51,6 +57,8 @@ export const CURSOS: Curso[] = [
     icon: '⛵',
     nombre: 'Timonel de Yate',
     desc: 'La licencia superior: embarcaciones más grandes y navegación más lejos de la costa. Agrega la materia de navegación, que conductor no tiene. A motor, o a vela y motor.',
+    corta: 'Más lejos de la costa, a motor o a vela.',
+    lecciones: 'Más de 140 lecciones',
     datos: '146 lecciones a motor, 159 a vela y motor · 26 temas',
     precio: 40000,
     meses: 6,
@@ -79,7 +87,7 @@ export const FAQS: { q: string; a: string }[] = [
   },
   {
     q: '¿Qué es gratis y qué se paga?',
-    a: 'Todas las lecciones y sus quizzes son gratis, con un tope de lecciones nuevas por día (2 en Conductor, 4 en Timonel). El pase suma el instructor con IA sin límite, los exámenes por materia, el examen general, los simulacros, el repaso y las lecciones sin tope.',
+    a: 'Las lecciones y sus quizzes son gratis. El pase suma instructor con IA sin límite, simulacros, repaso y lecciones sin tope diario.',
   },
   {
     q: '¿Cuánto cuesta el pase?',
@@ -87,11 +95,11 @@ export const FAQS: { q: string; a: string }[] = [
   },
   {
     q: '¿Timonel incluye Conductor?',
-    a: 'Son dos cursos distintos y cada pase habilita el suyo. Timonel es una licencia superior: su curso cubre la seguridad y la legislación de conductor, más a fondo, y suma navegación.',
+    a: 'Son dos cursos distintos. Timonel cubre lo de Conductor más a fondo y suma navegación.',
   },
   {
     q: '¿Sirve si ya tengo la licencia?',
-    a: 'Sí, para repasar. El contenido es el programa completo, no un resumen para aprobar.',
+    a: 'Sí, para repasar: es el programa completo.',
   },
 ];
 
