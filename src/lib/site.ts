@@ -37,7 +37,19 @@ export type Curso = {
   precio: number;
   meses: number;
   tope: number;
+  /** Los botones para empezar, cada uno con el curso de la app que abre. */
+  empezar: { texto: string; curso: CursoApp }[];
 };
+
+/**
+ * Las claves de curso que entiende la app en `?curso=`: el onboarding salta
+ * las preguntas de la embarcación y arranca con ese curso.
+ */
+export type CursoApp = 'conductor' | 'timonel-motor' | 'timonel-vela';
+
+export function appUrlCurso(curso: CursoApp) {
+  return `${APP_URL}/?curso=${curso}`;
+}
 
 export const CURSOS: Curso[] = [
   {
@@ -51,6 +63,7 @@ export const CURSOS: Curso[] = [
     precio: 20000,
     meses: 3,
     tope: 2,
+    empezar: [{ texto: 'Empezar gratis', curso: 'conductor' }],
   },
   {
     slug: 'timonel-de-yate',
@@ -63,17 +76,20 @@ export const CURSOS: Curso[] = [
     precio: 40000,
     meses: 6,
     tope: 4,
+    empezar: [
+      { texto: 'Empezar a motor', curso: 'timonel-motor' },
+      { texto: 'Empezar a vela y motor', curso: 'timonel-vela' },
+    ],
   },
 ];
 
-// Mientras la app no cobra (`COBROS_ACTIVOS` en teoria-nautica-conductor), el
-// pase se activa gratis por estos días y la app prueba distintos precios: el
-// landing no publica ninguno para no contradecir lo que ve cada usuario.
-// `precio` y `meses` de `CURSOS` quedan para cuando se vuelva a cobrar.
-export const PASE_PRUEBA_DIAS = 14;
-
 export function precioARS(n: number) {
   return `$${n.toLocaleString('es-AR')}`;
+}
+
+/** «$20.000 por 3 meses»: el Pase de un curso, como lo cobra la app (`PLANS`). */
+export function precioPase(c: Curso) {
+  return `${precioARS(c.precio)} por ${c.meses} meses`;
 }
 
 export const FAQS: { q: string; a: string }[] = [
@@ -91,7 +107,7 @@ export const FAQS: { q: string; a: string }[] = [
   },
   {
     q: '¿Cuánto cuesta el pase?',
-    a: `Todavía no lo cobramos. Si lo pedís desde la app, te lo activamos gratis por ${PASE_PRUEBA_DIAS} días como acceso anticipado.`,
+    a: `Conductor Náutico, ${precioPase(CURSOS[0])}. Timonel de Yate, ${precioPase(CURSOS[1])}. Pago único con Mercado Pago, no se renueva solo.`,
   },
   {
     q: '¿Timonel incluye Conductor?',

@@ -26,8 +26,8 @@ export function websiteLd() {
   };
 }
 
-// El curso es gratis. Mientras la app no cobra el pase, no se publica una
-// oferta paga: el precio todavía está en prueba (ver `PASE_PRUEBA_DIAS`).
+// El curso es gratis; el Pase es aparte y no es el curso, así que acá va sólo
+// la oferta gratis.
 export function courseLd(c: Curso) {
   return {
     '@context': 'https://schema.org',
