@@ -8,7 +8,7 @@ import { SiteFooter } from '@/components/SiteFooter';
 import { SiteNav } from '@/components/SiteNav';
 import { homeLd } from '@/lib/jsonld';
 import { pageMetadata } from '@/lib/meta';
-import { APP_URL, CURSOS, FAQS, precioARS } from '@/lib/site';
+import { APP_URL, CURSOS, FAQS, PASE_PRUEBA_DIAS } from '@/lib/site';
 
 export const metadata: Metadata = pageMetadata({
   title: { absolute: 'Teoría Náutica — El curso teórico para tu licencia náutica' },
@@ -180,7 +180,7 @@ export default function LandingPage() {
                   {[
                     c.datos,
                     `Gratis: todas las lecciones y sus quizzes, hasta ${c.tope} lecciones nuevas por día`,
-                    `Pase: ${precioARS(c.precio)} por ${c.meses} meses, pago único`,
+                    `Pase: acceso anticipado gratis por ${PASE_PRUEBA_DIAS} días`,
                   ].map((feat) => (
                     <li key={feat} className="text-sm text-gray-400 flex gap-2">
                       <Check />
@@ -204,7 +204,7 @@ export default function LandingPage() {
             ))}
           </div>
           <p className="text-center text-xs text-gray-400 mt-6">
-            Pago único con Mercado Pago, sin renovación automática. Cada pase habilita su curso.
+            Todavía no cobramos el pase: si lo pedís ahora, te lo activamos gratis. Cada pase habilita su curso.
           </p>
         </div>
       </section>
@@ -258,7 +258,7 @@ export default function LandingPage() {
 
       <CtaBlock
         titulo="Probalo antes de pagar"
-        texto="El curso completo, con sus lecciones y sus quizzes, gratis y sin tarjeta. El pase lo comprás cuando te preparás para rendir."
+        texto="El curso completo, con sus lecciones y sus quizzes, gratis y sin tarjeta. El pase lo pedís cuando te preparás para rendir."
       />
       <SiteFooter />
     </main>

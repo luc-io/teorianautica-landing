@@ -58,6 +58,12 @@ export const CURSOS: Curso[] = [
   },
 ];
 
+// Mientras la app no cobra (`COBROS_ACTIVOS` en teoria-nautica-conductor), el
+// pase se activa gratis por estos días y la app prueba distintos precios: el
+// landing no publica ninguno para no contradecir lo que ve cada usuario.
+// `precio` y `meses` de `CURSOS` quedan para cuando se vuelva a cobrar.
+export const PASE_PRUEBA_DIAS = 14;
+
 export function precioARS(n: number) {
   return `$${n.toLocaleString('es-AR')}`;
 }
@@ -76,8 +82,8 @@ export const FAQS: { q: string; a: string }[] = [
     a: 'Todas las lecciones y sus quizzes son gratis, con un tope de lecciones nuevas por día (2 en Conductor, 4 en Timonel). El pase suma el instructor con IA sin límite, los exámenes por materia, el examen general, los simulacros, el repaso y las lecciones sin tope.',
   },
   {
-    q: '¿Cuánto dura el pase?',
-    a: 'Tres meses en Conductor y seis en Timonel, porque el programa es más largo. Es un pago único: no se renueva solo.',
+    q: '¿Cuánto cuesta el pase?',
+    a: `Todavía no lo cobramos. Si lo pedís desde la app, te lo activamos gratis por ${PASE_PRUEBA_DIAS} días como acceso anticipado.`,
   },
   {
     q: '¿Timonel incluye Conductor?',

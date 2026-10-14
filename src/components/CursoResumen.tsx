@@ -1,4 +1,4 @@
-import { APP_URL, precioARS, type Curso } from '@/lib/site';
+import { APP_URL, PASE_PRUEBA_DIAS, type Curso } from '@/lib/site';
 
 // Bloque de precio y acceso que comparten las páginas de curso.
 export function CursoResumen({ curso }: { curso: Curso }) {
@@ -11,11 +11,9 @@ export function CursoResumen({ curso }: { curso: Curso }) {
           nuevas por día.
         </li>
         <li>
-          <strong>
-            Pase: {precioARS(curso.precio)} por {curso.meses} meses.
-          </strong>{' '}
-          Instructor con IA sin límite, exámenes por materia, examen general, simulacros, repaso y lecciones sin tope
-          diario. Pago único con Mercado Pago, sin renovación automática.
+          <strong>Pase: acceso anticipado gratis por {PASE_PRUEBA_DIAS} días.</strong> Instructor con IA sin límite,
+          exámenes por materia, examen general, simulacros, repaso y lecciones sin tope diario. Todavía no lo
+          cobramos: lo pedís desde la app.
         </li>
       </ul>
       <a
