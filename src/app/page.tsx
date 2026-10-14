@@ -9,6 +9,7 @@ import { SiteNav } from '@/components/SiteNav';
 import { homeLd } from '@/lib/jsonld';
 import { pageMetadata } from '@/lib/meta';
 import { APP_URL, CURSOS, FAQS, PASE_PRUEBA_DIAS } from '@/lib/site';
+import { AnimacionLoop } from '@/components/AnimacionLoop';
 
 export const metadata: Metadata = pageMetadata({
   title: { absolute: 'Teoría Náutica — El curso teórico para tu licencia náutica' },
@@ -20,6 +21,15 @@ export const metadata: Metadata = pageMetadata({
 function Check() {
   return <span className="text-gold-500 flex-shrink-0">→</span>;
 }
+
+// Los videos están en `public/videos/`; salen de `juego/reels/grabar.mjs --solo`
+// en teoria-nautica-conductor.
+const ANIMACIONES = [
+  { id: 'cruce-motor', titulo: 'Cruce', regla: 'Cede la que ve a la otra por su estribor, y pasa por su popa.' },
+  { id: 'vuelta-encontrada', titulo: 'De frente', regla: 'Las dos caen a estribor y se dejan por babor.' },
+  { id: 'alcance-lancha', titulo: 'Alcance', regla: 'El que alcanza cede siempre, sea lancha o velero.' },
+  { id: 'cuatro-luces', titulo: 'Luces de navegación', regla: 'Tope, costados y alcance: qué ves según desde dónde la mirás.' },
+];
 
 export default function LandingPage() {
   return (
@@ -53,6 +63,30 @@ export default function LandingPage() {
             </a>
           </div>
           <p className="text-sm text-gray-400 mt-4 sm:mt-6">Todas las lecciones gratis, sin tarjeta.</p>
+        </div>
+      </section>
+
+      {/* Animaciones */}
+      <section id="animaciones" className="pb-20 px-6">
+        <div className="max-w-4xl mx-auto">
+          <p className="text-gold-400 font-mono text-xs tracking-widest uppercase mb-2 text-center">Aprendés viendo</p>
+          <h2 className="font-display text-3xl font-bold text-white text-center mb-4 text-balance">
+            RIPA, luces y balizas, animadas
+          </h2>
+          <p className="text-center text-gray-400 max-w-xl mx-auto mb-10 text-balance">
+            Cada regla se ve en movimiento: quién cede, para dónde y por qué.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-6">
+            {ANIMACIONES.map((a) => (
+              <figure key={a.id} className="bg-navy-800 border border-navy-700 p-3">
+                <AnimacionLoop id={a.id} titulo={a.titulo} />
+                <figcaption className="px-2 pt-4 pb-2">
+                  <p className="font-display font-bold text-white">{a.titulo}</p>
+                  <p className="text-sm text-gray-400 mt-1 leading-relaxed">{a.regla}</p>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
         </div>
       </section>
 
