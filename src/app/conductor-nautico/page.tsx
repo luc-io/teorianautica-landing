@@ -47,6 +47,7 @@ export default function ConductorNautico() {
       titulo="Curso de Conductor Náutico, gratis"
       bajada="El programa de Prefectura completo: 77 lecciones con animaciones y un cuestionario por cada idea."
       cta={{ titulo: 'Empezá hoy, gratis', texto: 'Sin tarjeta y sin esperar una cohorte.' }}
+      curso={curso}
     >
       <JsonLd data={[courseLd(curso), breadcrumbLd(curso.nombre, `/${curso.slug}`)]} />
 
