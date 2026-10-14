@@ -8,7 +8,7 @@ import { SiteFooter } from '@/components/SiteFooter';
 import { SiteNav } from '@/components/SiteNav';
 import { homeLd } from '@/lib/jsonld';
 import { pageMetadata } from '@/lib/meta';
-import { APP_URL, CURSOS, FAQS, precioARS } from '@/lib/site';
+import { APP_URL, CURSOS, FAQS, precioPase } from '@/lib/site';
 import { AnimacionLoop } from '@/components/AnimacionLoop';
 import { EmpezarCurso } from '@/components/EmpezarCurso';
 
@@ -202,8 +202,8 @@ export default function Home() {
                 ))}
               </ul>
               <p className="text-sm text-gray-400 mt-6">
-                Conductor {precioARS(CONDUCTOR.precio)} por {CONDUCTOR.meses} meses · Timonel{' '}
-                {precioARS(TIMONEL.precio)} por {TIMONEL.meses} meses. Pago único, no se renueva solo.
+                Conductor {precioPase(CONDUCTOR)} · Timonel {precioPase(TIMONEL)}. Pago único, no se renueva
+                solo.
               </p>
             </div>
           </div>
