@@ -26,8 +26,8 @@ export function websiteLd() {
   };
 }
 
-// El curso es gratis; el pase es la oferta paga. Van las dos para que el
-// buscador no muestre el curso como pago.
+// El curso es gratis. Mientras la app no cobra el pase, no se publica una
+// oferta paga: el precio todavía está en prueba (ver `PASE_PRUEBA_DIAS`).
 export function courseLd(c: Curso) {
   return {
     '@context': 'https://schema.org',
@@ -44,16 +44,6 @@ export function courseLd(c: Curso) {
         category: 'Free',
         name: 'Curso gratis',
         price: 0,
-        priceCurrency: 'ARS',
-        availability: 'https://schema.org/InStock',
-        url: `${SITE_URL}/${c.slug}`,
-      },
-      {
-        '@type': 'Offer',
-        category: 'Paid',
-        name: `Pase ${c.nombre} · ${c.meses} meses`,
-        description: `Pago único por ${c.meses} meses: instructor con IA sin límite, exámenes, simulacros, repaso y lecciones sin tope diario.`,
-        price: c.precio,
         priceCurrency: 'ARS',
         availability: 'https://schema.org/InStock',
         url: `${SITE_URL}/${c.slug}`,

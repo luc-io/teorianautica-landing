@@ -77,7 +77,7 @@ export default function TimonelDeYate() {
         ))}
       </ul>
       <p>
-        Es también la parte que más cuesta estudiar sola, y por eso el pase dura seis meses: el programa es más largo.
+        Es también la parte que más cuesta estudiar sola, porque el programa es más largo.
       </p>
 
       <h2>Cómo rendir</h2>
