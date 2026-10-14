@@ -14,7 +14,7 @@ import { AnimacionLoop } from '@/components/AnimacionLoop';
 export const metadata: Metadata = pageMetadata({
   title: { absolute: 'Teoría Náutica — El curso teórico para tu licencia náutica' },
   description:
-    'El programa de la Prefectura completo para Conductor Náutico y Timonel de Yate: lecciones y quizzes gratis, instructor con IA y simulacros de examen.',
+    'El programa de la Prefectura completo para Conductor Náutico y Timonel de Yate: lecciones y cuestionarios gratis, instructor con IA y simulacros de examen.',
   path: '/',
 });
 
@@ -28,7 +28,7 @@ const ANIMACIONES = [
 
 const PASOS = [
   { titulo: 'Elegí tu licencia', texto: 'Conductor Náutico o Timonel de Yate.' },
-  { titulo: 'Estudiá a tu ritmo', texto: 'Lecciones cortas, animaciones y quizzes.' },
+  { titulo: 'Estudiá a tu ritmo', texto: 'Lecciones cortas, animaciones y cuestionarios.' },
   { titulo: 'Rendí en Prefectura', texto: 'Libre, en el turno del mes.' },
 ];
 
@@ -49,7 +49,7 @@ export default function Home() {
               Sacá tu licencia náutica estudiando desde el celular
             </h1>
             <p className="text-lg text-gray-300 mb-8 text-balance">
-              El curso teórico completo, gratis. Con animaciones y un quiz por cada idea.
+              El curso teórico completo, gratis. Con animaciones y un cuestionario por cada idea.
             </p>
             <a
               href={APP_URL}
