@@ -83,14 +83,13 @@ export const CURSOS: Curso[] = [
   },
 ];
 
-// Mientras la app no cobra (`COBROS_ACTIVOS` en teoria-nautica-conductor), el
-// pase se activa gratis por estos días y la app prueba distintos precios: el
-// landing no publica ninguno para no contradecir lo que ve cada usuario.
-// `precio` y `meses` de `CURSOS` quedan para cuando se vuelva a cobrar.
-export const PASE_PRUEBA_DIAS = 14;
-
 export function precioARS(n: number) {
   return `$${n.toLocaleString('es-AR')}`;
+}
+
+/** «$20.000 por 3 meses»: el Pase de un curso, como lo cobra la app (`PLANS`). */
+export function precioPase(c: Curso) {
+  return `${precioARS(c.precio)} por ${c.meses} meses`;
 }
 
 export const FAQS: { q: string; a: string }[] = [
@@ -108,7 +107,7 @@ export const FAQS: { q: string; a: string }[] = [
   },
   {
     q: '¿Cuánto cuesta el pase?',
-    a: `Todavía no lo cobramos. Si lo pedís desde la app, te lo activamos gratis por ${PASE_PRUEBA_DIAS} días como acceso anticipado.`,
+    a: `Conductor Náutico, ${precioPase(CURSOS[0])}. Timonel de Yate, ${precioPase(CURSOS[1])}. Pago único con Mercado Pago, no se renueva solo.`,
   },
   {
     q: '¿Timonel incluye Conductor?',
