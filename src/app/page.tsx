@@ -8,7 +8,8 @@ import { SiteFooter } from '@/components/SiteFooter';
 import { SiteNav } from '@/components/SiteNav';
 import { homeLd } from '@/lib/jsonld';
 import { pageMetadata } from '@/lib/meta';
-import { APP_URL, CURSOS, FAQS, precioPro } from '@/lib/site';
+import { APP_URL, CURSOS, FAQS, precioPro, whatsappCompartir, whatsappContacto } from '@/lib/site';
+import { IconoWhatsApp } from '@/components/IconoWhatsApp';
 import { AnimacionLoop } from '@/components/AnimacionLoop';
 import { EmpezarCurso } from '@/components/EmpezarCurso';
 
@@ -106,6 +107,15 @@ export default function Home() {
                 <figcaption className="px-1 pt-3 pb-1">
                   <p className="font-display font-bold text-white">{a.titulo}</p>
                   <p className="text-sm text-gray-400 mt-1">{a.regla}</p>
+                  <a
+                    href={whatsappCompartir(`${a.titulo}: ${a.regla} Mirá la animación:`, `anim-${a.id}`, '#animaciones')}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-xs text-gold-400 hover:text-gold-300 transition-colors mt-3"
+                  >
+                    <IconoWhatsApp tam={14} />
+                    Compartir
+                  </a>
                 </figcaption>
               </figure>
             ))}
@@ -205,6 +215,15 @@ export default function Home() {
                 Conductor {precioPro(CONDUCTOR)} · Timonel {precioPro(TIMONEL)}. Pago único, no se renueva
                 solo.
               </p>
+              <a
+                href={whatsappContacto('Hola, tengo una consulta sobre Pro de Teoría Náutica.')}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-sm text-gold-400 hover:text-gold-300 transition-colors mt-3"
+              >
+                <IconoWhatsApp tam={15} />
+                ¿Dudas? Escribinos por WhatsApp
+              </a>
             </div>
           </div>
         </div>

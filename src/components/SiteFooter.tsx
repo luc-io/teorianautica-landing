@@ -1,4 +1,5 @@
-import { DATA_FISCAL_URL, EMAIL, LEGAL } from '@/lib/site';
+import { IconoWhatsApp } from './IconoWhatsApp';
+import { DATA_FISCAL_URL, EMAIL, LEGAL, whatsappContacto } from '@/lib/site';
 
 const LEGALES = [
   { href: LEGAL.terminos, label: 'Términos' },
@@ -31,9 +32,20 @@ export function SiteFooter() {
               </a>
             </li>
           </ul>
-          <a href={`mailto:${EMAIL}`} className="text-xs text-gray-400 hover:text-gray-200 transition-colors">
-            {EMAIL}
-          </a>
+          <div className="flex flex-col items-center sm:items-end gap-2 text-xs text-gray-400">
+            <a
+              href={whatsappContacto()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 hover:text-white transition-colors"
+            >
+              <IconoWhatsApp tam={14} />
+              WhatsApp
+            </a>
+            <a href={`mailto:${EMAIL}`} className="hover:text-gray-200 transition-colors">
+              {EMAIL}
+            </a>
+          </div>
         </div>
         <ul className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs text-gray-400">
           {LEGALES.map((l) => (
