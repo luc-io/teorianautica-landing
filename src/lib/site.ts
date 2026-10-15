@@ -11,6 +11,9 @@ export const EMAIL = 'hola@teorianautica.com';
 /** +54 9 341 611-2731, como lo pide `wa.me`. El mismo que `WHATSAPP_NUMERO` en la app. */
 export const WHATSAPP_NUMERO = '5493416112731';
 
+/** El canal de WhatsApp: reglas animadas, la pregunta del día y fechas de examen. */
+export const WHATSAPP_CANAL = 'https://whatsapp.com/channel/0029VbDkvoIGZNCrFeAdxJ1y';
+
 /** Abre WhatsApp con un mensaje a Teoría Náutica, ya escrito. */
 export function whatsappContacto(texto = 'Hola, tengo una consulta sobre Teoría Náutica.') {
   return `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(texto)}`;

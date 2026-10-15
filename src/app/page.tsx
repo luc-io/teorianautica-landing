@@ -8,7 +8,7 @@ import { SiteFooter } from '@/components/SiteFooter';
 import { SiteNav } from '@/components/SiteNav';
 import { homeLd } from '@/lib/jsonld';
 import { pageMetadata } from '@/lib/meta';
-import { APP_URL, CURSOS, FAQS, precioPro, whatsappCompartir, whatsappContacto } from '@/lib/site';
+import { APP_URL, CURSOS, FAQS, WHATSAPP_CANAL, precioPro, whatsappCompartir, whatsappContacto } from '@/lib/site';
 import { IconoWhatsApp } from '@/components/IconoWhatsApp';
 import { AnimacionLoop } from '@/components/AnimacionLoop';
 import { EmpezarCurso } from '@/components/EmpezarCurso';
@@ -120,6 +120,19 @@ export default function Home() {
               </figure>
             ))}
           </div>
+          <p className="text-center mt-10">
+            <a
+              href={WHATSAPP_CANAL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 border border-navy-700 bg-navy-800 px-5 py-3 text-sm text-white hover:border-gold-400 transition-colors"
+            >
+              <span className="text-[#25D366]">
+                <IconoWhatsApp tam={18} />
+              </span>
+              Una regla nueva cada semana en el canal de WhatsApp
+            </a>
+          </p>
         </div>
       </section>
 
