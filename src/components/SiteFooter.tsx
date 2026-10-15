@@ -1,5 +1,5 @@
 import { IconoWhatsApp } from './IconoWhatsApp';
-import { DATA_FISCAL_URL, EMAIL, LEGAL, whatsappContacto } from '@/lib/site';
+import { DATA_FISCAL_URL, EMAIL, LEGAL, WHATSAPP_CANAL, whatsappContacto } from '@/lib/site';
 
 const LEGALES = [
   { href: LEGAL.terminos, label: 'Términos' },
@@ -41,6 +41,15 @@ export function SiteFooter() {
             >
               <IconoWhatsApp tam={14} />
               WhatsApp
+            </a>
+            <a
+              href={WHATSAPP_CANAL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 hover:text-white transition-colors"
+            >
+              <IconoWhatsApp tam={14} />
+              Canal de WhatsApp
             </a>
             <a href={`mailto:${EMAIL}`} className="hover:text-gray-200 transition-colors">
               {EMAIL}
