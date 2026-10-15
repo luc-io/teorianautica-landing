@@ -8,6 +8,24 @@ export const APP_URL = 'https://app.teorianautica.com';
 export const SITE_NAME = 'Teoría Náutica';
 export const EMAIL = 'hola@teorianautica.com';
 
+/** +54 9 341 611-2731, como lo pide `wa.me`. El mismo que `WHATSAPP_NUMERO` en la app. */
+export const WHATSAPP_NUMERO = '5493416112731';
+
+/** Abre WhatsApp con un mensaje a Teoría Náutica, ya escrito. */
+export function whatsappContacto(texto = 'Hola, tengo una consulta sobre Teoría Náutica.') {
+  return `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(texto)}`;
+}
+
+/**
+ * Abre WhatsApp para mandarle a quien quiera el texto con un enlace a la
+ * portada. Las UTM hacen que la app cuente a quien llega por ahí (`contenido`
+ * dice qué se compartió).
+ */
+export function whatsappCompartir(texto: string, contenido: string, ancla = '') {
+  const url = `${SITE_URL}/?utm_source=whatsapp&utm_medium=compartir&utm_campaign=landing&utm_content=${encodeURIComponent(contenido)}${ancla}`;
+  return `https://wa.me/?text=${encodeURIComponent(`${texto} ${url}`)}`;
+}
+
 /**
  * Enlace del QR de Data Fiscal (F. 960/NM de ARCA), que tiene que mostrar quien
  * vende por internet: el `href` que da ARCA, `https://qr.afip.gob.ar/?qr=…`.
