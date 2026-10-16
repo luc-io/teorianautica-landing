@@ -8,7 +8,7 @@ import { SiteFooter } from '@/components/SiteFooter';
 import { SiteNav } from '@/components/SiteNav';
 import { homeLd } from '@/lib/jsonld';
 import { pageMetadata } from '@/lib/meta';
-import { APP_URL, CURSOS, FAQS, WHATSAPP_CANAL, precioPro, whatsappCompartir, whatsappContacto } from '@/lib/site';
+import { APP_URL, CURSOS, FAQS, PRO_A_LA_VENTA, WHATSAPP_CANAL, comoPro, precioPro, whatsappCompartir, whatsappContacto } from '@/lib/site';
 import { IconoWhatsApp } from '@/components/IconoWhatsApp';
 import { AnimacionLoop } from '@/components/AnimacionLoop';
 import { EmpezarCurso } from '@/components/EmpezarCurso';
@@ -225,8 +225,9 @@ export default function Home() {
                 ))}
               </ul>
               <p className="text-sm text-gray-400 mt-6">
-                Conductor {precioPro(CONDUCTOR)} · Timonel {precioPro(TIMONEL)}. Pago único, no se renueva
-                solo.
+                {PRO_A_LA_VENTA
+                  ? `Conductor ${precioPro(CONDUCTOR)} · Timonel ${precioPro(TIMONEL)}. Pago único, no se renueva solo.`
+                  : `Pro: ${comoPro()}.`}
               </p>
               <a
                 href={whatsappContacto('Hola, tengo una consulta sobre Pro de Teoría Náutica.')}
