@@ -116,17 +116,9 @@ export function duracion(dias: number) {
 
 /**
  * Si la app está cobrando Pro (`COBROS_ACTIVOS` en la app). Apagado, el landing
- * no muestra precios: Pro se prueba gratis desde la app.
+ * no habla de precio ni de cómo conseguir Pro: sólo de lo que suma.
  */
 export const PRO_A_LA_VENTA = false;
-/** Días de la prueba gratis de Pro (`DIAS_PRUEBA` en la app). */
-export const DIAS_PRUEBA_PRO = 14;
-
-/** Cómo se consigue Pro, en una frase: el precio, o la prueba gratis mientras no se cobra. */
-export function comoPro(c?: Curso) {
-  if (!PRO_A_LA_VENTA) return `gratis por ${DIAS_PRUEBA_PRO} días desde la app, mientras estamos en lanzamiento`;
-  return c ? `${precioPro(c)}, pago único` : `Conductor ${precioPro(CURSOS[0])} · Timonel ${precioPro(CURSOS[1])}. Pago único, no se renueva solo`;
-}
 
 /** «$20.000 por 45 días»: Pro de un curso, como lo cobra la app (`PLANS`). */
 export function precioPro(c: Curso) {
@@ -146,12 +138,14 @@ export const FAQS: { q: string; a: string }[] = [
     q: '¿Qué es gratis y qué se paga?',
     a: 'Las lecciones y sus cuestionarios son gratis. Pro suma instructor con IA sin límite, simulacros, repaso y lecciones sin tope diario.',
   },
-  {
-    q: '¿Cuánto cuesta Pro?',
-    a: PRO_A_LA_VENTA
-      ? `Conductor Náutico, ${precioPro(CURSOS[0])}. Timonel de Yate, ${precioPro(CURSOS[1])}. Pago único con Mercado Pago, no se renueva solo.`
-      : `Todavía no se vende: estamos en lanzamiento. Desde la app lo podés probar gratis ${DIAS_PRUEBA_PRO} días.`,
-  },
+  ...(PRO_A_LA_VENTA
+    ? [
+        {
+          q: '¿Cuánto cuesta Pro?',
+          a: `Conductor Náutico, ${precioPro(CURSOS[0])}. Timonel de Yate, ${precioPro(CURSOS[1])}. Pago único con Mercado Pago, no se renueva solo.`,
+        },
+      ]
+    : []),
   {
     q: '¿Timonel incluye Conductor?',
     a: 'Son dos cursos distintos. Timonel cubre lo de Conductor más a fondo y suma navegación.',
